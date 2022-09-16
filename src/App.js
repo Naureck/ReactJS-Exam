@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from 'react'
+import Video from './Component/videoAll/videoComponent/Video.js'
+import Heading from './Component/heading/heading.js'
 
 function App() {
+  const videoRef = useRef();
+
+  const handlePlay = () => {
+    videoRef.current.play()
+  }
+
+  const handlePause = () => {
+    videoRef.current.pause()
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ padding: 20 }}>
+      <Video ref={videoRef}/>
+      <Heading Heading/>
+      <button onClick={handlePlay}>Play</button>
+      <button onClick={handlePause}>Pause</button>
     </div>
   );
+  
 }
 
 export default App;
